@@ -1,0 +1,15 @@
+.header__list {
+  display: flex;
+  gap: 30px;
+  list-style-type: none;
+}
+
+.header__list-item-link {
+  color: #FFF;
+  text-decoration: none;
+}
+
+.header__list-item-link:hover {
+  color: #beaeae;
+  text-decoration: none;
+}

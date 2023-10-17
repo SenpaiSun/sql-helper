@@ -1,0 +1,87 @@
+.input__form {
+  display: flex;
+  gap: 10px;
+  justify-content: space-around;
+  margin: 0 30px;
+}
+
+.input__item {
+  width: 40vw;
+  height: 30vh;
+}
+
+.input__container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.input__container-button {
+  justify-content: center;
+}
+
+.input__convert {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: rgb(54, 52, 52);
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  font-weight: normal;
+  line-height: 1.2;
+}
+
+.input__convert:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.input__convert:active {
+  background-color: rgb(92, 84, 84);
+}
+
+
+.input__input-container-button {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.input__input-container-button-copy {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.input__item {
+  font-size: 16px;
+  font-weight: 1.1;
+  line-height: normal;
+  background-color: rgb(54, 52, 52);
+  resize: none;
+  border-radius: 1px;
+  color: #fff;
+  border: none;
+  outline: 1px solid rgb(133, 133, 146);
+}
+
+.input__item:focus {
+  outline: 2px solid rgb(228, 212, 212);
+}
+
+.input__button {
+  color: #fff;
+  background-color: rgb(54, 52, 52);
+  border: none;
+  width: 100px;
+  height: 40px;
+  border-radius: 8px;
+}
+
+.input__button:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.input__button:active {
+  background-color: rgb(92, 84, 84);
+}
