@@ -2,10 +2,14 @@ import React from "react"
 import './InHelper.css'
 import Inputs from '../Inputs/Inputs'
 
-const InHelper: React.FC = () => {
+export interface InHelperProps {
+  convertInput: (value:string) => string[]
+}
+
+const InHelper: React.FC<InHelperProps> = (props) => {
 return (
   <>
-    <Inputs/>
+    <Inputs convertInput={props.convertInput}/>
   </>
 )
 }
