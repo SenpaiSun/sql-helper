@@ -6,22 +6,42 @@ import {InHelperProps} from '../InHelper/InHelper'
 const Inputs: React.FC<InHelperProps> = (props) => {
   const [valueInput, setValueInput] = useState('')
   const [valueOutput, setValueOutput] = useState('')
-  console.log(valueInput)
+
+  /* format1 - преобразовывает в формат для MySQL (пример: id1, id2, id3)
+  format2 - преобразовывает в формат для Clickhouse (пример: 'id1', 'id2', 'id3') */
+  const formatFromLocalStorage = localStorage.getItem('format')
+  const [formatOutput, setFormatOutput] = useState(formatFromLocalStorage ? formatFromLocalStorage : 'format1')
+
+  const handleSelectFormat1 = () => {
+    setFormatOutput('format1')
+    localStorage.setItem('format', 'format1')
+  }
+
+  const handleSelectFormat2 = () => {
+    setFormatOutput('format2')
+    localStorage.setItem('format', 'format2')
+  }
+
+  // Функция для получения текста из инпута
   const handleValueChange = (event:React.ChangeEvent<HTMLTextAreaElement>) => {
     setValueInput(event.target.value)
   }
 
+  // Функция для очистки инпутов
   const handleResetTextArea = () => {
     setValueInput('')
     setValueOutput('')
   }
 
+  // Функция для преобразования значения из инпута в аутпут
   const handleConvertValue = () => {
-    const valueOutputArray = props.convertInput(valueInput)
+    const valueOutputArray = formatOutput === 'format1' ? props.convertValueInHelperFormat1(valueInput) : props.convertValueInHelperFormat2(valueInput)
     const valueOutput = valueOutputArray.join()
     setValueOutput(valueOutput)
+    console.log(formatOutput)
   }
 
+  // Функция для копирования текста из аутпута в буфер обмена
   const handleCopyValue = () => {
     navigator.clipboard.writeText(valueOutput)
   }
@@ -31,6 +51,11 @@ const Inputs: React.FC<InHelperProps> = (props) => {
       <form className="input__form">
         <div className="input__container">
           <div className="input__input-container-button">
+            <div className="input__input-buttons-format">
+              <p className="input__input-format">Format:</p>
+              <button type="button" className={formatOutput === 'format1' ? "input__button input__button-active" : "input__button"} onClick={handleSelectFormat1}>id,</button>
+              <button type="button" className={formatOutput === 'format2' ? "input__button input__button-active" : "input__button"} onClick={handleSelectFormat2}>'id',</button>
+            </div>
             <button type="button" className="input__button" onClick={handleResetTextArea}>Clear</button>
           </div>
           <div className="input__container-input">
