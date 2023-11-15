@@ -1,9 +1,10 @@
 import React, { useState } from "react"
 import './Inputs.css'
 import {InHelperProps} from '../InHelper/InHelper'
+import {GetValueProps} from '../GetValue/GetValue'
 
 
-const Inputs: React.FC<InHelperProps> = (props) => {
+const Inputs: React.FC<InHelperProps | GetValueProps> = (props) => {
   const [valueInput, setValueInput] = useState('')
   const [valueOutput, setValueOutput] = useState('')
 

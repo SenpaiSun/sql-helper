@@ -13,3 +13,7 @@
   color: #beaeae;
   text-decoration: none;
 }
+
+.header__list-item-image {
+  margin-top: -28px;
+}
