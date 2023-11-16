@@ -33,16 +33,13 @@ function App() {
     })
   }
 
-  const getValueFromJson = (value:string) => {
-    const idsArray = value.split('\n')
-    const idsArrayFiltered = idsArray.filter(item => item.trim() !== '')
-    return idsArrayFiltered.map((id:string, index) => {
-      const idClear = id.trim()
-      if(index === 0) {
-        return "'" + idClear + "'"
-      }
-      return " '" + idClear + "'"
+  const getValueFromJson = (value:string, key:string) => {
+    const valueToJson = value.split('\n').filter(Boolean)
+    const valuesKeys = valueToJson.map((item) => {
+      const JsonItem = JSON.parse(item)
+      return JsonItem[key]
     })
+    return valuesKeys
   }
 
 
@@ -51,8 +48,8 @@ function App() {
       <Header />
       <Routes>
         <Route path='/' element={<Main/>}/>
-        <Route path="/in-helper" element={<InHelper convertValueInHelperFormat1={convertValueInHelperFormat1} convertValueInHelperFormat2={convertValueInHelperFormat2}/>}/>
-        <Route path="/get-value" element={<GetValue convertValueInHelperFormat1={getValueFromJson} convertValueInHelperFormat2={convertValueInHelperFormat2}/>} />
+        <Route path="/in-helper" element={<InHelper convertValueFromKey={getValueFromJson} convertValueInHelperFormat1={convertValueInHelperFormat1} convertValueInHelperFormat2={convertValueInHelperFormat2}/>}/>
+        <Route path="/get-value" element={<GetValue convertValueFromKey={getValueFromJson} convertValueInHelperFormat1={convertValueInHelperFormat1} convertValueInHelperFormat2={convertValueInHelperFormat2}/>} />
       </Routes>
     </div>
   )
