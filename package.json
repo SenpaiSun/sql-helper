@@ -1,7 +1,7 @@
 {
-  "homepage": "https://senpaisun.github.io/sql-helper",
+  "homepage": "https://senpaisun.github.io/sql-helper/",
   "name": "sql-helper",
-  "private": true,
+  "private": false,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
