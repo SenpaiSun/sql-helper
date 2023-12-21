@@ -16,9 +16,9 @@ const Inputs: React.FC<CommonProps> = (props) => {
   const router = useLocation()
 
   useEffect(() => {
-    if(router.pathname === '/in-helper') {
+    if(router.pathname === '/sql-helper/in-helper') {
       setIsLocation('in-helper')
-    } else if(router.pathname === '/get-value') {
+    } else if(router.pathname === '/sql-helper/get-value') {
       setIsLocation('get-value')
     }
   }, [router.pathname])

@@ -52,9 +52,9 @@ function App() {
     <div className='root'>
       <Header />
       <Routes>
-        <Route path='/' element={<Main/>}/>
-        <Route path="/in-helper" element={<InHelper convertValueInHelperFormat1={convertValueInHelperFormat1} convertValueInHelperFormat2={convertValueInHelperFormat2}/>}/>
-        <Route path="/get-value" element={<GetValue convertValueFromKey={getValueFromJson} />} />
+        <Route path='/sql-helper' element={<Main/>}/>
+        <Route path="/sql-helper/in-helper" element={<InHelper convertValueInHelperFormat1={convertValueInHelperFormat1} convertValueInHelperFormat2={convertValueInHelperFormat2}/>}/>
+        <Route path="/sql-helper/get-value" element={<GetValue convertValueFromKey={getValueFromJson} />} />
       </Routes>
     </div>
   )
