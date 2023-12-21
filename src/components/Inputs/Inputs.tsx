@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react"
 import './Inputs.css'
-import {GetValueProps} from '../GetValue/GetValue'
-import {InHelperProps} from '../InHelper/InHelper'
 import { useLocation } from "react-router-dom"
 
-const Inputs: React.FC<InHelperProps | GetValueProps> = (props) => {
+export interface CommonProps {
+  convertValueInHelperFormat1?: (value: string) => string[];
+  convertValueInHelperFormat2?: (value: string) => string[];
+  convertValueFromKey?: (value: string, key: string) => string[];
+}
+
+const Inputs: React.FC<CommonProps> = (props) => {
   const [valueInput, setValueInput] = useState('')
   const [valueOutput, setValueOutput] = useState('')
   const [isLocation, setIsLocation] = useState('')
@@ -19,8 +23,8 @@ const Inputs: React.FC<InHelperProps | GetValueProps> = (props) => {
     }
   }, [router.pathname])
 
-  /* format1 - преобразовывает в формат для MySQL (пример: id1, id2, id3)
-  format2 - преобразовывает в формат для Clickhouse (пример: 'id1', 'id2', 'id3') */
+  // format1 - преобразовывает в формат для MySQL (пример: id1, id2, id3)
+  // format2 - преобразовывает в формат для Clickhouse (пример: 'id1', 'id2', 'id3')
   const formatFromLocalStorage = localStorage.getItem('format')
   const [formatOutput, setFormatOutput] = useState(formatFromLocalStorage ? formatFromLocalStorage : 'format1')
 
@@ -53,13 +57,21 @@ const Inputs: React.FC<InHelperProps | GetValueProps> = (props) => {
   // Функция для преобразования значения из инпута в аутпут
   const handleConvertValue = () => {
     if (isLocation === 'in-helper') {
-      const valueOutputArray = formatOutput === 'format1' ? props.convertValueInHelperFormat1(valueInput) : props.convertValueInHelperFormat2(valueInput)
-      const valueOutput = valueOutputArray.join()
-      setValueOutput(valueOutput)
-      console.log(formatOutput)
+      const convertFunction = formatOutput === 'format1' ? props.convertValueInHelperFormat1 : props.convertValueInHelperFormat2;
+      if (convertFunction) {
+        const valueOutputArray = convertFunction(valueInput);
+        const valueOutput = valueOutputArray.join();
+        setValueOutput(valueOutput);
+        console.log(formatOutput);
+      }
     }
-    if (isLocation === 'get-value') {
-      props.convertValueFromKey(valueInput, valueKey);
+    if (isLocation === 'get-value' && props.convertValueFromKey) {
+      const getValue = props.convertValueFromKey(valueInput, valueKey);
+      console.log(getValue)
+      if(getValue) {
+        const resultString = getValue.join('\n');
+        setValueOutput(resultString)
+      }
     }
   }
 

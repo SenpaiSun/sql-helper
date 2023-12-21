@@ -34,22 +34,27 @@ function App() {
   }
 
   const getValueFromJson = (value:string, key:string) => {
-    const valueToJson = value.split('\n').filter(Boolean)
-    const valuesKeys = valueToJson.map((item) => {
-      const JsonItem = JSON.parse(item)
-      return JsonItem[key]
-    })
-    return valuesKeys
-  }
+    const regex = /['"]?(\w+)['"]?:\s*['"]?([^'"]+)['"]?,/g;
 
+    const valueToArray = value.split('\n').filter(Boolean).filter(line => !/\{|\}/.test(line)).map(item => item.trim());
+
+    const filteredArray = valueToArray.map(item => {
+      const matches = [...item.matchAll(regex)];
+      const keyValuePairs = matches.map(match => ({ [match[1]]: match[2] }));
+      return Object.assign({}, ...keyValuePairs);
+    });
+
+    const result = filteredArray.filter(obj => obj[key] !== undefined).map(obj => obj[key]);
+    return result
+  };
 
   return (
     <div className='root'>
       <Header />
       <Routes>
         <Route path='/' element={<Main/>}/>
-        <Route path="/in-helper" element={<InHelper convertValueFromKey={getValueFromJson} convertValueInHelperFormat1={convertValueInHelperFormat1} convertValueInHelperFormat2={convertValueInHelperFormat2}/>}/>
-        <Route path="/get-value" element={<GetValue convertValueFromKey={getValueFromJson} convertValueInHelperFormat1={convertValueInHelperFormat1} convertValueInHelperFormat2={convertValueInHelperFormat2}/>} />
+        <Route path="/in-helper" element={<InHelper convertValueInHelperFormat1={convertValueInHelperFormat1} convertValueInHelperFormat2={convertValueInHelperFormat2}/>}/>
+        <Route path="/get-value" element={<GetValue convertValueFromKey={getValueFromJson} />} />
       </Routes>
     </div>
   )
