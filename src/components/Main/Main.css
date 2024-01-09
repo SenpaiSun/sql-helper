@@ -11,6 +11,12 @@
   margin: 150px auto 50px;
 }
 
+@media screen and (max-width:1100px) {
+  .helper__title {
+    text-align: center;
+  }
+}
+
 .helper__in-helper-router {
   text-decoration: none;
   color: #fff;
@@ -79,5 +85,21 @@
   }
   100% {
     background-position: 100% 50%;
+  }
+}
+
+@media screen and (max-width:700px) {
+  .helper__title {
+    font-size: 25px;
+  }
+  .helper__in-helper-router {
+    font-size: 25px;
+  }
+  .helper__get-value-router {
+    font-size: 25px;
+  }
+  .helper__in-helper-text {
+    font-size: 15px;
+    text-align: center;
   }
 }

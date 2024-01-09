@@ -13,6 +13,7 @@ const Inputs: React.FC<CommonProps> = (props) => {
   const [valueOutput, setValueOutput] = useState('')
   const [isLocation, setIsLocation] = useState('')
   const [valueKey, setValueKey] = useState('')
+  const [copyState, setCopyState] = useState(false)
   const router = useLocation()
 
   useEffect(() => {
@@ -22,6 +23,22 @@ const Inputs: React.FC<CommonProps> = (props) => {
       setIsLocation('get-value')
     }
   }, [router.pathname])
+
+  useEffect(() => {
+    if(copyState === true) {
+      console.log(copyState)
+      const buttonCopy = document.querySelector('.input__button-copy-disabled') as HTMLElement | null
+      if (buttonCopy) {
+        buttonCopy.classList.add('input__button-copy-enable');
+        buttonCopy.textContent = 'Ok!';
+        setTimeout(() => {
+          buttonCopy.classList.remove('input__button-copy-enable');
+          buttonCopy.textContent = 'Copy';
+          setCopyState(false);
+        }, 300);
+      }
+    }
+  }, [copyState]);
 
   // format1 - преобразовывает в формат для MySQL (пример: id1, id2, id3)
   // format2 - преобразовывает в формат для Clickhouse (пример: 'id1', 'id2', 'id3')
@@ -78,6 +95,7 @@ const Inputs: React.FC<CommonProps> = (props) => {
   // Функция для копирования текста из аутпута в буфер обмена
   const handleCopyValue = () => {
     navigator.clipboard.writeText(valueOutput)
+    setCopyState(true)
   }
 
   return (
@@ -101,11 +119,11 @@ const Inputs: React.FC<CommonProps> = (props) => {
           </div>
         </div>
         <div className="input__container input__container-button">
-          <button type="button" className="input__convert" onClick={handleConvertValue}>Convert</button>
+          <button type="button" className="input__convert" onClick={handleConvertValue}>{isLocation === 'in-helper' ? 'Convert' : 'Get value'}</button>
         </div>
         <div className="input__container">
           <div className="input__input-container-button input__input-container-button-copy">
-              <button type="button" className="input__button" onClick={handleCopyValue}>Copy</button>
+              <button type="button" className="input__button input__button-copy-disabled" onClick={handleCopyValue}>Copy</button>
             </div>
             <div className="input__container-input">
               <textarea className="input__item input__item-output" value={valueOutput} disabled spellCheck="false"/>

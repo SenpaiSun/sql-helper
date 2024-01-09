@@ -3,6 +3,7 @@ import Header from '../Header/Header'
 import InHelper from '../InHelper/InHelper'
 import GetValue from '../GetValue/GetValue'
 import Main from '../Main/Main'
+import Footer from '../Footer/Footer'
 import { Routes, Route} from 'react-router-dom'
 
 function App() {
@@ -56,6 +57,7 @@ function App() {
         <Route path="/sql-helper/in-helper" element={<InHelper convertValueInHelperFormat1={convertValueInHelperFormat1} convertValueInHelperFormat2={convertValueInHelperFormat2}/>}/>
         <Route path="/sql-helper/get-value" element={<GetValue convertValueFromKey={getValueFromJson} />} />
       </Routes>
+      <Footer />
     </div>
   )
 }

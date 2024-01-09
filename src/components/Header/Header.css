@@ -7,6 +7,7 @@
 .header__list-item-link {
   color: #FFF;
   text-decoration: none;
+  font-size: 15px;
 }
 
 .header__list-item-link:hover {
@@ -16,4 +17,10 @@
 
 .header__list-item-image {
   margin-top: -28px;
+}
+
+@media screen and (max-width:700px) {
+  .header__list-item-link {
+    font-size: 13px;
+  }
 }
