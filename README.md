@@ -1,9 +1,9 @@
 # SQL-Helper
-### Annotation
-This project was written in order to simplify the work of technical support specialists, which I was until a certain time. My colleagues who continue to work in this field are also satisfied with this project, as it **simplifies** working with a large amount of data.
+### Описание проекта:
+Данный проект был написан для того, чтобы упростить работу специалистов технической поддержки, которым я был до определенного времени. Мои коллеги, которые продолжают работать в этой сфере, также довольны этим проектом, так как он упрощает работу с большим объемом данных.
 ## In-Helper
-Helps you **convert data**, such as the id of the entity that was sent to you as a column, to wrap each entity in brackets that your GUI requires.
+Помогает преобразовать данные, такие как идентификатор сущности, который был отправлен вам в виде столбца, чтобы заключить каждый объект в скобки, которые требуются вашему графическому интерфейсу. Часто, в различных компаниях, менеджеры, которые работают с продуктом, присылают вам как сотруднику поддержки айди тех сущностей, с которыми возникли проблемы. Если их много, вручную пробрасывать в GUI неудобно и времязатратно. Данный сервис помогает сделать все это в один клик.
 ## GetValue
-Helps **to get** the value of the **desired key** in all JSON objects.
+Помогает получить значение желаемого ключа во всех объектах JSON. Данная нужда появилась после того, как в MONGODB пришлось работать с большим количеством данных. Например, сотруднику нужно выгрузить одно какое то поле с большого количества объектов JSON. 
 
-**The project is located on GitHub Pages:** [click](https://senpaisun.github.io/sql-helper/)
+**Проект находится тут:** [click](https://senpaisun.github.io/sql-helper/)
