@@ -5,8 +5,8 @@ import { Flex } from 'antd'
 
 export const Header: React.FC = () => {
   return (
-    <header className='m-2 w-full'>
-      <Flex gap="large">
+    <header className='w-full'>
+      <Flex gap="large" className={'p-2'}>
         <Link to={'/'}>
           <img className='w-24' src={logo} />
         </Link>
