@@ -5,11 +5,11 @@ import { Typography } from 'antd'
 
 export const Main: React.FC = () => {
   return (
-    <Flex justify='center' align='center' className={'w-full h-full p-4'} vertical>
+    <Flex className={'w-full h-full p-4'} align="center" vertical>
       <Typography.Title level={1} style={{ color: 'white' }}>
-        Your assistant for clients with various SQL GUI:
+      Your assistant to work as a technical support engineer:
       </Typography.Title>
-      <Flex className={"m-0 w-full"}>
+      <Flex vertical className={"m-0 "} align="center" gap="large">
         {routesToPage.map((link, index) => (
           <MainNavItem key={index} toPage={link.path} name={link.name} />
         ))}
