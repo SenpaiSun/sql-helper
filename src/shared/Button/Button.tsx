@@ -27,7 +27,7 @@ const useStyle = createStyles(({ prefixCls, css }) => ({
   `,
 }));
 
-export const Button = () => {
+export const Button = ({func}: {func: () => void}) => {
   const { styles } = useStyle();
   return (
     <ConfigProvider
@@ -36,7 +36,7 @@ export const Button = () => {
       }}
     >
       <Space>
-        <ButtonAntd type="primary" size="large" className="w-24 h-24 rounded-full">
+        <ButtonAntd onClick={func} type="primary" size="large" className="w-24 h-24 rounded-full" style={{outline: 'none'}}>
           Convert
         </ButtonAntd>
       </Space>
