@@ -1,6 +1,6 @@
 import { Button } from '@shared/Button/Button'
+import { Input } from '@shared/Input/Input'
 import { Flex, Button as ButtonAntd, Typography } from 'antd'
-import TextArea from 'antd/es/input/TextArea'
 import { Content } from 'antd/es/layout/layout'
 import { useEffect, useState } from 'react'
 
@@ -79,9 +79,9 @@ export const InHelper: React.FC = () => {
           </ButtonAntd>
         </Flex>
         <Flex gap='large'>
-          <TextArea value={inputText} onChange={(e) => setInputText(e.target.value)} style={{ minHeight: '40vh', width: '40vw', resize: 'none' }} className='bg-[#242424] hover:bg-[#242424] focus:bg-[#242424] border-white hover:border-white focus:border-white text-white placeholder-white' />
+          <Input inputText={inputText} setInputText={setInputText} style={{ minHeight: '40vh', width: '40vw', resize: 'none' }} disabled={false}/>
           <Button func={handleConvertValue} />
-          <TextArea value={outputText} style={{ minHeight: '40vh', width: '40vw', resize: 'none', cursor: 'pointer', color: 'white' }} disabled />
+          <Input inputText={outputText} setInputText={setInputText} style={{ minHeight: '40vh', width: '40vw', resize: 'none' }} disabled={false}/>
         </Flex>
       </Flex>
     </Content>
