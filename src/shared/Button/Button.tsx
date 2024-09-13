@@ -1,45 +1,17 @@
-import { Button as ButtonAntd, ConfigProvider, Space } from 'antd';
-import { createStyles } from 'antd-style';
+import { Button as ButtonAntd, ButtonProps} from 'antd'
 
-const useStyle = createStyles(({ prefixCls, css }) => ({
-  linearGradientButton: css`
-    &.${prefixCls}-btn-primary:not([disabled]):not(.${prefixCls}-btn-dangerous) {
-      border-width: 0;
+export interface PropsButton {
+  func: (number) => void
+  text: string
+  type: string
+  className: string
+  otherProps?: ButtonProps
+}
 
-      > span {
-        position: relative;
-      }
-
-      &::before {
-        content: '';
-        background: linear-gradient(135deg, #6253e1, #04befe);
-        position: absolute;
-        inset: 0;
-        opacity: 1;
-        transition: all 0.3s;
-        border-radius: inherit;
-      }
-
-      &:hover::before {
-        opacity: 0;
-      }
-    }
-  `,
-}));
-
-export const Button = ({func}: {func: () => void}) => {
-  const { styles } = useStyle();
+export const Button: React.FC<PropsButton> = ({func, text, type, className, otherProps}: PropsButton) => {
   return (
-    <ConfigProvider
-      button={{
-        className: styles.linearGradientButton,
-      }}
-    >
-      <Space>
-        <ButtonAntd onClick={func} type="primary" size="large" className="w-24 h-24 rounded-full" style={{outline: 'none'}}>
-          Convert
-        </ButtonAntd>
-      </Space>
-    </ConfigProvider>
+    <ButtonAntd {...otherProps} style={{outline: 'none'}} type={type} className={className} onClick={func}>
+    {text}
+  </ButtonAntd>
   );
 };

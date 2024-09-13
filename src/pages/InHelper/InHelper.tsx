@@ -1,6 +1,7 @@
 import { Button } from '@shared/Button/Button'
+import { ButtonConvert } from '@shared/ButtonConvert/ButtonConvert'
 import { Input } from '@shared/Input/Input'
-import { Flex, Button as ButtonAntd, Typography } from 'antd'
+import { Flex, Typography } from 'antd'
 import { Content } from 'antd/es/layout/layout'
 import { useEffect, useState } from 'react'
 
@@ -21,7 +22,7 @@ export const InHelper: React.FC = () => {
     }
   }, [])
 
-  // change format - id, or 'id',
+  // сменить формат для конвертирования - id, or 'id',
   const changeFormat = (num: number) => {
     setSelectedButtonFormat(num)
     localStorage.setItem('format', num.toString())
@@ -65,23 +66,38 @@ export const InHelper: React.FC = () => {
       setOutputText(convertValueInHelperFormat2(inputText))
     }
   }
+  // Функция очистки инпута и аутпута текста
+  const clearTextAreas = () => {
+    setInputText('')
+    setOutputText('')
+  }
+  // Функция копирования в буфер обмена
+  const handleCopyValue = () => {
+    navigator.clipboard.writeText(outputText)
+  }
 
   return (
     <Content className='w-full flex items-center justify-center' style={{ minHeight: '78vh' }}>
       <Flex className='flex-col' gap='small'>
-        <Flex style={{ width: '40vw' }} className='justify-start' gap='large'>
-          <Typography.Text className='text-white text-xl'>Format:</Typography.Text>
-          <ButtonAntd type='primary' className={`text-white bg-[#3e423e] border-none hover:border-white focus:border-white w-20 ${selectedButtonFormat === 1 && 'bg-green-500'}`} style={{ outline: 'none' }} onClick={() => changeFormat(1)}>
-            id,
-          </ButtonAntd>
-          <ButtonAntd type='primary' className={`text-white bg-[#3e423e] border-none hover:border-white focus:border-white w-20 ${selectedButtonFormat === 2 && 'bg-green-500'}`} style={{ outline: 'none' }} onClick={() => changeFormat(2)}>
-            'id',
-          </ButtonAntd>
+        <Flex className='justify-between'>
+          <Flex style={{ width: '40vw' }} className='justify-between' gap='large'>
+            <Flex className='justify-start' gap='large'>
+              <Typography.Text className='text-white text-xl'>Format:</Typography.Text>
+              <Button text='id,' type='primary' className={`text-white bg-[#3e423e] border-none hover:border-white focus:border-white w-20 ${selectedButtonFormat === 1 && 'bg-green-500'}`} func={() => changeFormat(1)} />
+              <Button text="'id'," type='primary' className={`text-white bg-[#3e423e] border-none hover:border-white focus:border-white w-20 ${selectedButtonFormat === 2 && 'bg-green-500'}`} func={() => changeFormat(2)} />
+            </Flex>
+            <Flex>
+              <Button text='Clear' type='primary' className={`text-white bg-[#3e423e] border-none hover:border-white focus:border-white w-20`} func={() => clearTextAreas()} otherProps={{ danger: true }} />
+            </Flex>
+          </Flex>
+          <Flex style={{ width: '40vw' }} className='justify-start' gap='large'>
+            <Button text='Copy' type='primary' className={`text-white bg-[#3e423e] border-none hover:border-white focus:border-white w-20`} func={() => handleCopyValue()}  />
+          </Flex>
         </Flex>
         <Flex gap='large'>
-          <Input inputText={inputText} setInputText={setInputText} style={{ minHeight: '40vh', width: '40vw', resize: 'none' }} disabled={false}/>
-          <Button func={handleConvertValue} />
-          <Input inputText={outputText} setInputText={setInputText} style={{ minHeight: '40vh', width: '40vw', resize: 'none' }} disabled={false}/>
+          <Input inputText={inputText} setInputText={setInputText} style={{ minHeight: '40vh', width: '40vw', resize: 'none' }} disabled={false} />
+          <ButtonConvert func={handleConvertValue} text='Convert' type='primary' size='large' className='w-24 h-24 rounded-full' />
+          <Input inputText={outputText} setInputText={setInputText} style={{ minHeight: '40vh', width: '40vw', resize: 'none' }} disabled={true} />
         </Flex>
       </Flex>
     </Content>
