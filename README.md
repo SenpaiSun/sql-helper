@@ -1,50 +1,32 @@
-# React + TypeScript + Vite
+# SQL-Helper
+### Описание проекта:
+Данный проект был написан для того, чтобы упростить работу специалистов технической поддержки, которым я был до определенного времени. Мои коллеги, которые продолжают работать в этой сфере, также довольны этим проектом, так как он упрощает работу с большим объемом данных.
+## In-Helper
+Помогает преобразовать данные, такие как идентификатор сущности, который был отправлен вам в виде столбца, чтобы заключить каждый объект в скобки, которые требуются вашему графическому интерфейсу. Часто, в различных компаниях, менеджеры, которые работают с продуктом, присылают вам как сотруднику поддержки айди тех сущностей, с которыми возникли проблемы. Если их много, вручную пробрасывать в GUI неудобно и времязатратно. Данный сервис помогает сделать все это в один клик.
+## GetValue
+Помогает получить значение желаемого ключа во всех объектах JSON. Данная нужда появилась после того, как в MONGODB пришлось работать с большим количеством данных. Например, сотруднику нужно выгрузить одно какое то поле с большого количества объектов JSON.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Технологии, которые применялись в проекте:
+HTML5, CSS3, JavaScript, TypeScript
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Проект находится тут:
+ [click](https://senpaisun.github.io/sql-helper/)
 
-## Expanding the ESLint configuration
+## Установка:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+**Клонируйте репозиторий:**
 
-- Configure the top-level `parserOptions` property like this:
+`git clone git@github.com:SenpaiSun/sql-helper.git`
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+**Установите зависимости:**
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+`npm ci`
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+**Соберите проект:**
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+`npm run build`
+
+**Можете запустить:**
+
+`npm run start`
