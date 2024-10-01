@@ -33,9 +33,10 @@ interface PropsButtonConvert {
   type: string
   size: string
   className: string
+  disabled?: boolean
 }
 
-export const ButtonConvert = ({func, text, type, size, className}: PropsButtonConvert) => {
+export const ButtonConvert = ({func, text, type, size, className, disabled}: PropsButtonConvert) => {
   const { styles } = useStyle();
   return (
     <ConfigProvider
@@ -44,7 +45,7 @@ export const ButtonConvert = ({func, text, type, size, className}: PropsButtonCo
       }}
     >
       <Space>
-        <ButtonAntd onClick={func} type={type} size={size} className={className} style={{outline: 'none'}}>
+        <ButtonAntd onClick={func} type={type} size={size} className={className} style={{outline: 'none'}}disabled={disabled || false}>
           {text}
         </ButtonAntd>
       </Space>

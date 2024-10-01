@@ -1,52 +1,31 @@
+import DiffMatchPatch from 'diff-match-patch';
+
 export const compareTexts = (originalText: string, modifiedText: string): JSX.Element => {
-  // Разделяем тексты на строки
-  const originalLines = originalText.split('\n');
-  const modifiedLines = modifiedText.split('\n');
+  const dmp = new DiffMatchPatch();
 
-  const maxLength = Math.max(originalLines.length, modifiedLines.length);
+  // Получаем массив изменений между двумя текстами
+  const diffs = dmp.diff_main(originalText, modifiedText);
+  dmp.diff_cleanupSemantic(diffs); // Оптимизация различий
 
-  // Функция для создания html элемента с цветами для разных частей текста
-  const createHighlightedText = (original: string, modified: string) => {
-    const result: JSX.Element[] = [];
+  // Преобразуем диффы в элементы JSX
+  const result = diffs.map((diff, index) => {
+    const [operation, text] = diff;
+    let style = {};
 
-    const maxLen = Math.max(original.length, modified.length);
-    for (let i = 0; i < maxLen; i++) {
-      const charOrig = original[i] || ''; // Символ из оригинала
-      const charMod = modified[i] || ''; // Символ из модифицированного
-
-      if (charOrig === charMod) {
-        result.push(<span>{charOrig}</span>);
-      } else {
-        // Зачеркнуть оригинал и подсветить красным
-        if (charOrig) {
-          result.push(
-            <span style={{ backgroundColor: 'red', textDecoration: 'line-through' }}>
-              {charOrig}
-            </span>
-          );
-        }
-        // Подсветить зеленым модифицированный текст
-        if (charMod) {
-          result.push(
-            <span style={{ backgroundColor: 'green' }}>
-              {charMod}
-            </span>
-          );
-        }
-      }
+    if (operation === -1) {
+      // Удаленный текст
+      style = { backgroundColor: 'red', textDecoration: 'line-through' };
+    } else if (operation === 1) {
+      // Добавленный текст
+      style = { backgroundColor: 'green' };
     }
-    console.log(result)
-    return <span>{result}</span>;
-  };
 
-  // Мапим строки для сравнения
-  return (
-    <div>
-      {Array.from({ length: maxLength }).map((_, i) => (
-        <div key={i}>
-          {createHighlightedText(originalLines[i] || '', modifiedLines[i] || '')}
-        </div>
-      ))}
-    </div>
-  );
+    return (
+      <span key={index} style={style}>
+        {text}
+      </span>
+    );
+  });
+
+  return <div>{result}</div>;
 };
