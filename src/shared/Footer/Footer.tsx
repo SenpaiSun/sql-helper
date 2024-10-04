@@ -6,7 +6,9 @@ export const Footer: React.FC = () => {
   return (
     <Footer style={{ backgroundColor: '#242424' }}>
       <Flex justify='space-between'>
-        <Typography.Text style={{ color: 'white' }}>© 2024</Typography.Text>
+        <Flex align='end'>
+          <Typography.Text style={{ color: 'white' }}>© 2024</Typography.Text>
+        </Flex>
         <FooterContacts />
       </Flex>
     </Footer>
