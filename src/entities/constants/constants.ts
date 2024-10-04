@@ -7,6 +7,10 @@ export const routesToPage = [
   {
     path: '/compare-text',
     name: 'Compare text'
+  },
+  {
+    path: '/graylog-converter',
+    name: 'Graylog converter'
   }
 ]
 
