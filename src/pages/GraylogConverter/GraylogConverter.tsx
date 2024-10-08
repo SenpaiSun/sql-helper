@@ -2,6 +2,7 @@ import { graylogConverterText } from '@entities/hooks/graylogConverterText'
 import { ButtonClear } from '@shared/ButtonClear/ButtonClear'
 import { ButtonConvert } from '@shared/ButtonConvert/ButtonConvert'
 import { ButtonCopy } from '@shared/ButtonCopy/ButtonCopy'
+import { ContainersLinks } from '@shared/ContainersLinks/ContainersLinks'
 import { Input } from '@shared/Input/Input'
 import { Flex } from 'antd'
 import { Content } from 'antd/es/layout/layout'
@@ -30,10 +31,13 @@ export const GraylogConverter: React.FC = () => {
     <Content className='w-full flex items-center justify-center' style={{ minHeight: '78vh' }}>
       <Flex gap='small' className='flex-col'>
         <Flex className='justify-between'>
-          <Flex style={{ width: '40vw' }} className='justify-end'>
-            <ButtonClear func={() => clearTextAreas()} />
+          <Flex style={{ width: '40vw' }} className='justify-between'>
+            <ContainersLinks />
+            <Flex className='content-end flex-wrap'>
+              <ButtonClear func={() => clearTextAreas()} />
+            </Flex>
           </Flex>
-          <Flex style={{ width: '40vw' }}>
+          <Flex style={{ width: '40vw' }} className='content-end flex-wrap'>
             <ButtonCopy func={() => handleCopyValue()} />
           </Flex>
         </Flex>
