@@ -1,4 +1,5 @@
 import { Button } from '@shared/Button/Button'
+import { ButtonClear } from '@shared/ButtonClear/ButtonClear'
 import { ButtonConvert } from '@shared/ButtonConvert/ButtonConvert'
 import { ButtonCopy } from '@shared/ButtonCopy/ButtonCopy'
 import { Input } from '@shared/Input/Input'
@@ -88,11 +89,11 @@ export const InHelper: React.FC = () => {
               <Button text="'id'," type='primary' className={`text-white bg-[#3e423e] border-none hover:border-white focus:border-white w-20 ${selectedButtonFormat === 2 && 'bg-green-500'}`} func={() => changeFormat(2)} />
             </Flex>
             <Flex>
-              <Button text='Clear' type='primary' className={`text-white bg-[#3e423e] border-none hover:border-white focus:border-white w-20`} func={() => clearTextAreas()} otherProps={{ danger: true }} />
+              <ButtonClear func={() => clearTextAreas()} />
             </Flex>
           </Flex>
           <Flex style={{ width: '40vw' }} className='justify-start' gap='large'>
-          <ButtonCopy func={() => handleCopyValue()}  />
+            <ButtonCopy func={() => handleCopyValue()} />
           </Flex>
         </Flex>
         <Flex gap='large'>
