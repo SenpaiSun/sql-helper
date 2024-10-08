@@ -1,5 +1,6 @@
 import { Button } from '@shared/Button/Button'
 import { ButtonConvert } from '@shared/ButtonConvert/ButtonConvert'
+import { ButtonCopy } from '@shared/ButtonCopy/ButtonCopy'
 import { Input } from '@shared/Input/Input'
 import { Flex, Typography } from 'antd'
 import { Content } from 'antd/es/layout/layout'
@@ -91,7 +92,7 @@ export const InHelper: React.FC = () => {
             </Flex>
           </Flex>
           <Flex style={{ width: '40vw' }} className='justify-start' gap='large'>
-            <Button text='Copy' type='primary' className={`text-white bg-[#3e423e] border-none hover:border-white focus:border-white w-20`} func={() => handleCopyValue()}  />
+          <ButtonCopy func={() => handleCopyValue()}  />
           </Flex>
         </Flex>
         <Flex gap='large'>

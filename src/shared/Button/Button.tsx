@@ -1,17 +1,17 @@
-import { Button as ButtonAntd, ButtonProps} from 'antd'
+import { Button as ButtonAntd, ButtonProps } from 'antd'
 
 export interface PropsButton {
-  func: (number) => void
+  func: (...args) => void
   text: string
   type: string
   className: string
   otherProps?: ButtonProps
 }
 
-export const Button: React.FC<PropsButton> = ({func, text, type, className, otherProps}: PropsButton) => {
+export const Button: React.FC<PropsButton> = ({ func, text, type, className, otherProps }: PropsButton) => {
   return (
-    <ButtonAntd {...otherProps} style={{outline: 'none'}} type={type} className={className} onClick={func}>
-    {text}
-  </ButtonAntd>
-  );
-};
+    <ButtonAntd {...otherProps} style={{ outline: 'none' }} type={type} className={className} onClick={func}>
+      {text}
+    </ButtonAntd>
+  )
+}
