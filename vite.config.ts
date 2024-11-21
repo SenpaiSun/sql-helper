@@ -5,7 +5,7 @@ import tsconfigPaths from 'vite-tsconfig-paths'
 
 export default defineConfig({
   plugins: [react(), tsconfigPaths()],
-  base: '/sql-helper/',
+  base: '/sql-helper',
   build: {
     outDir: 'dist',
     rollupOptions: {
