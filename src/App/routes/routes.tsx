@@ -7,11 +7,11 @@ import { GraylogConverter } from '@pages/GraylogConverter/GraylogConverter'
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path='/' element={<Layout />}>
-      <Route path='/' element={<Main />} />
-      <Route path='/in-helper' element={<InHelper />} />
-      <Route path='/compare-text' element={<CompareText />} />
-      <Route path="/graylog-converter" element={<GraylogConverter />}></Route>
+    <Route path='/sql-helper' element={<Layout />}>
+      <Route path='/sql-helper' element={<Main />} />
+      <Route path='/sql-helper/in-helper' element={<InHelper />} />
+      <Route path='/sql-helper/compare-text' element={<CompareText />} />
+      <Route path="/sql-helper/graylog-converter" element={<GraylogConverter />}></Route>
     </Route>
   )
 )

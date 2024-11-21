@@ -22,7 +22,7 @@ export const CompareText: React.FC = () => {
     openPopup()
   }
   return (
-    <Content className='w-full flex items-center justify-center' style={{ minHeight: '78vh' }}>
+    <Content className='w-full flex items-center justify-center' style={{ backgroundColor: '#242424', minHeight: '78vh' }}>
       {isPopupVisible && (
         <>
           {/* Оверлей для затемнения фона */}

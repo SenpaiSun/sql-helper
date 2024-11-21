@@ -8,7 +8,7 @@ export const Header: React.FC = () => {
   return (
     <Header style={{ backgroundColor: '#242424' }}>
       <Flex align='center' gap='large' className={'p-2'}>
-        <Link to={'/'}>
+        <Link to={'/sql-helper'}>
           <img className='w-24' src={logo} />
         </Link>
         <NavBar />

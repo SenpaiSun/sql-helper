@@ -79,7 +79,7 @@ export const InHelper: React.FC = () => {
   }
 
   return (
-    <Content className='w-full flex items-center justify-center' style={{ minHeight: '78vh' }}>
+    <Content className='w-full flex items-center justify-center' style={{ backgroundColor: '#242424', minHeight: '78vh' }}>
       <Flex className='flex-col' gap='small'>
         <Flex className='justify-between'>
           <Flex style={{ width: '40vw' }} className='justify-between' gap='large'>

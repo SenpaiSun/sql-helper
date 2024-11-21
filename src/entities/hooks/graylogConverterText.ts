@@ -1,15 +1,14 @@
 export const graylogConverterText = (text: string) => {
-  const textArray = text.split('')
-  const result: string[] = []
+  const result: string[] = [];
 
-  for (let i = 0; i < textArray.length; i++) {
-    if (textArray[i] === '{' || textArray[i] === '}') {
-      result.push('/')
-    } else if (/^[a-zA-Zа-яА-ЯёЁ0-9]$/.test(textArray[i])) {
-      result.push(textArray[i])
+  for (let char of text) {
+    if (/^[a-zA-Zа-яА-ЯёЁ0-9]$/.test(char)) {
+      result.push(char); // Добавляем буквы и цифры в результат
     } else {
-      result.push('.')
+      result.push('.'); // Заменяем все остальные символы, включая пробелы, на точку
     }
   }
-  return result.join('')
+
+  // Оборачиваем результат в слэши и возвращаем
+  return '/' + result.join('') + '/';
 }
