@@ -1,13 +1,14 @@
 {
   "compilerOptions": {
     "jsx": "react-jsx",
+    "esModuleInterop": true,
     "baseUrl": ".",
     "paths": {
       "@app/*": ["src/App/*"],
       "@entities/*": ["src/entities/*"],
       "@pages/*": ["src/pages/*"],
       "@shared/*": ["src/shared/*"],
-      "@assets/*": ["src/assets/*"],
+      "@assets/*": ["src/assets/*"]
     }
   },
   "include": ["src"]

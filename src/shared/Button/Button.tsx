@@ -3,7 +3,7 @@ import { Button as ButtonAntd, ButtonProps } from 'antd'
 export interface PropsButton {
   func: (...args) => void
   text: string
-  type: string
+  type: "dashed" | "default" | "text" | "link" | "primary"
   className: string
   otherProps?: ButtonProps
 }

@@ -6,7 +6,7 @@ export const FooterContacts: React.FC = () => {
     <List
       dataSource={contacts}
       renderItem={(item) => (
-        <List.Item styles={{ display: 'flex', justifyContent: 'end' }}>
+        <List.Item style={{ display: 'flex', justifyContent: 'end' }}>
           {item.name === 'Email' ? (
             <Flex align='end' justify='end'>
               <a href={`mailto:${item.url}`} className='text-white hover:text-gray-300'>

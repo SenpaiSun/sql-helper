@@ -30,8 +30,8 @@ const useStyle = createStyles(({ prefixCls, css }) => ({
 interface PropsButtonConvert {
   func: () => void
   text: string
-  type: string
-  size: string
+  type: "dashed" | "default" | "text" | "link" | "primary"
+  size: "small" | "middle" | "large"
   className: string
   disabled?: boolean
 }
