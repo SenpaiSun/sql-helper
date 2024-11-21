@@ -1,5 +1,9 @@
 {
   "compilerOptions": {
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "moduleResolution": "node",
+    "skipLibCheck": true,
     "jsx": "react-jsx",
     "esModuleInterop": true,
     "baseUrl": ".",
